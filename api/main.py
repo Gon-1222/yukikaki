@@ -15,11 +15,11 @@ def get_list():
     
     try:
         # 画像を取得
-        # img = get_image_from_alt(page_url, alt_text)
-        img= get_image_from_file("02.gif")
+        img = get_image_from_alt(page_url, alt_text)
+        #img= get_image_from_file("02.gif")
         # トリミング
-        #cropped_img = crop_image(img, 234, 108, 297, 171)
-        cropped_img=img
+        cropped_img = crop_image(img, 234, 108, 297, 171)
+        #cropped_img=img
         display_image(cropped_img)
         # 平均色の取得
         avg_color = get_average_color(cropped_img)
