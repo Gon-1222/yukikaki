@@ -20,7 +20,7 @@ def get_list():
         # トリミング
         cropped_img = crop_image(img, 234, 108, 297, 171)
         #cropped_img=img
-        display_image(cropped_img)
+        #display_image(cropped_img)
         # 平均色の取得
         avg_color = get_average_color(cropped_img)
         print(f"平均色: {avg_color}")
@@ -28,7 +28,9 @@ def get_list():
         # 平均色の分類
         color_data = [(144, 169, 131), (148, 158, 115), (200, 170, 72), (190, 110, 92)]  # 赤、緑、青、グレー
         classified_index = classify_average_color(cropped_img, color_data)
-        print(f"分類結果: 色データ{classified_index + 1}に最も近い")
+        if not(classified_index):
+            return jsonify([classified_index])
+        print(f"分類結果: 色データ{classified_index}に最も近い")
     except Exception as e:
         print(f"エラー: {e}")
     return jsonify([int(classified_index)])
